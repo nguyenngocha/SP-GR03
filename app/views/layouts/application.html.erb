@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OnlineStore</title>
+    <title>Online Store</title>
     <%= csrf_meta_tags %>
-
+    <meta charset="utf-8" />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <%= render 'layouts/header' %>
+    </header>
+    <footer>
+      <%= yield %>
+      <%= render 'layouts/footer' %>  
+    </footer>
+    
   </body>
 </html>
