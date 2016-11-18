@@ -10,17 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161115165139) do
+ActiveRecord::Schema.define(version: 20161118010233) do
 
-  create_table "users", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.string   "email"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.string   "password_digest"
-    t.string   "remember_digest"
-    t.boolean  "admin",           default: false
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "classifies", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_classifies_on_category_id"
+    t.index ["product_id"], name: "index_classifies_on_product_id"
+  end
+
+  create_table "order_details", force: :cascade do |t|
+    t.integer  "amount"
+    t.integer  "order_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_details_on_order_id"
+    t.index ["product_id"], name: "index_order_details_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.float    "payment"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.string   "content"
+    t.float    "price"
+    t.integer  "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
