@@ -1,6 +1,42 @@
 Rails.application.routes.draw do
 
 
+  get 'classifies/new'
+
+  get 'classifies/create'
+
+  get 'categories/new'
+
+  get 'categories/create'
+
+  get 'products/new'
+
+  get 'products/create'
+
+  get 'products/show'
+
+  get 'products/index'
+
+  get 'order_details/new'
+
+  get 'order_details/create'
+
+  get 'produces/new'
+
+  get 'produces/create'
+
+  get 'produces/update'
+
+  get 'produces/show'
+
+  get 'produces/destroy'
+
+  get 'produces/index'
+
+  get 'orders/new'
+
+  get 'orders/create'
+
   get 'product/new'
 
   get 'product/create'
