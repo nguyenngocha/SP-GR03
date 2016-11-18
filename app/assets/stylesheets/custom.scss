@@ -29,7 +29,9 @@ textarea {
 		margin-bottom: 10px;
 	}
 }
-
+.row {
+	margin-left: 30vw;
+}
 /* typography */
 h1,h2,h3,h4,h5,h6 {
 	line-height:1;
@@ -67,7 +69,8 @@ p {
 	padding-top: 9px;
 	font-weight: bold;
 	&:hover {
-		color: #fff;
+		background-color: transparent;
+		color: red;
 		text-decoration: none;
 	}
 }
