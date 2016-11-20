@@ -1,2 +1,20 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<%= will_paginate :previous_label => 'Trước', :next_label => 'Tiếp' %>
+	<div class="row">
+		<% @products.each do |p| %>
+			<div class="producta col-xs-3 col-lg-3">
+				<% if FileTest.exist?("#{Rails.root}/app/assets/images/products/#{p.id}.jpg") %>
+					<%= image_tag("products/#{p.id}" , :size => "175x260") %>
+				<% else %>
+				<%= image_tag("products/1" , :size => "175x260") %>
+				<% end %>
+				<%= @text ="<h3>#{p.name}</h3>".html_safe %>
+				<%= @text = ("<p>Gía: #{p.price.to_s}</p>").html_safe  %>
+				<% if (p.amount > 0) %>
+				<%= @text = "<p>Còn hàng</p>".html_safe %> 
+				<% else %>
+				<%= @text = "<p>Hết hàng</p>".html_safe %>
+				<% end%>
+			</div>
+			<% end %>
+	</div>
+<%= will_paginate %>

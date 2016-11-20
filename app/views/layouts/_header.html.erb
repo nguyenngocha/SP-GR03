@@ -1,6 +1,9 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "Online Store", root_path, id: "logo" %>
+  <ul class="nav navbar-nav navbar-left">
+    <li><%= link_to( image_tag("logo", :size => "40x40"), root_path, id: "logo_image" )%></li>
+    <li><%= link_to "Online Store", root_path, id: "logo" %></li>
+    </ul>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home",   root_path %></li>
