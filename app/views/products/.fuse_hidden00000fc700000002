@@ -1,0 +1,5 @@
+<div class="col-md-3">
+  image_tag(Faker::Avatar.image(<%= product.name %>), alt: product.name, class: "roboimage")
+  <p><%= product.name %></p>
+  <p><%= product.price %></p>
+</div>
