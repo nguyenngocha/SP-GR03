@@ -58,6 +58,7 @@ Rails.application.routes.draw do
   get 'order/create'
 
 
+
   root 'products#index'
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
