@@ -2,17 +2,14 @@
 		<div class="group-search row">
 			<div class="col-sm-1">
 				<div class="input-group-btn">
-					<button class="btn btn-default dropdown-toggle show-all-button" data-toggle="dropdown" type="button">
-					<span class="filter_box" data-category="">All</span>
-					<span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
-					<li data-category="So 1">1</li>
-					<li data-category="so 2">2</li>
-					<li data-category="so 3">3</li>
-					</ul>
-				</div>
-				</div>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">All<b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Profile", current_user %></li>
+              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+            </ul>
 			<div class="col-sm-4">
 					<input class="form-control" value="" placeholder="Input something to search..." type="text" name="z">
 			</div>

@@ -1,16 +1,16 @@
-			<div class="producta col-xs-3 col-lg-3">
-				<% if FileTest.exist?("#{Rails.root}/app/assets/images/products/#{product.id}.jpg") %>
-					<%= image_tag("products/#{product.id}" , :size => "175x260") %>
-				<% else %>
-				<%= image_tag("products/1" , :size => "175x260") %>
-				<% end %>
-			
-				<%= @text ="<h3>#{product.name}</h3>".html_safe %>
-				<%= @text = ("<p>Gía: #{product.price.to_s}</p>").html_safe  %>
-				<% if (product.amount > 0) %>
-				<%= @text = "<p>Còn hàng</p>".html_safe %> 
-				<% else %>
-				<%= @text = "<p>Hết hàng</p>".html_safe %>
-				<% end%>
-		
-			</div>
+<div class="producta col-xs-3 col-lg-3">
+	<% if FileTest.exist?("#{Rails.root}/app/assets/images/products/#{product.id}.jpg") %>
+		<%= image_tag("products/#{product.id}" , :size => "175x260") %>
+	<% else %>
+	<%= image_tag("products/1" , :size => "175x260") %>
+	<% end %>
+
+	<%= @text ="<h3>#{product.name}</h3>".html_safe %>
+	<%= @text = ("<p>Gía: #{product.price.to_s}</p>").html_safe  %>
+	<% if (product.amount > 0) %>
+	<%= @text = "<p>Còn hàng</p>".html_safe %> 
+	<% else %>
+	<%= @text = "<p>Hết hàng</p>".html_safe %>
+	<% end%>
+
+</div>
