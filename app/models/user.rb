@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+class User < ActiveRecord::Base
 	has_many :orders, dependent: :destroy
 	attr_accessor :remember_token
 	before_save { email.downcase! }

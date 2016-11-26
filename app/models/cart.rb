@@ -1,2 +1,2 @@
-class Cart < ApplicationRecord
+class Cart < ActiveRecord::Base
 end
