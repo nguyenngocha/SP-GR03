@@ -8,15 +8,20 @@ class Product < ActiveRecord::Base
 
 
 
-	def self.search(id , search)
-		if(id == 1)
-			category1 = Category.find_by_id(id)
+	def self.search(category_name, search)
+
+		if(category_name[0].nil? || category_name[0].empty?)
+			product = Product.all
 		else
-			return Product.all
+			category1 = Category.find_by_name(category_name)
+			if !(category1)
+				return product = nil;
+			else
+				product = category1.groupcategory
+			end
 		end
 		if (search)
-			searchdc = search.downcase
-			product = category1.groupcategory		
+			searchdc = search.downcase		
 			words = searchdc.split(/[^[[:word:]]]+/)
 			for word in words
 				product = product.select{ |e| e.name.downcase.include? word}
