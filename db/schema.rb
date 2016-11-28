@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161126144110) do
+ActiveRecord::Schema.define(version: 20161127143632) do
 
   create_table "address_lists", force: :cascade do |t|
+    t.string   "name"
     t.string   "address"
     t.string   "phone_number"
+    t.boolean  "default"
     t.integer  "ward_id"
     t.integer  "user_id"
     t.datetime "created_at",   null: false
@@ -29,13 +31,13 @@ ActiveRecord::Schema.define(version: 20161126144110) do
     t.integer  "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_cartdetails_on_cart_id"
+    t.index ["product_id"], name: "index_cartdetails_on_product_id"
   end
 
   create_table "carts", force: :cascade do |t|
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "user_id"
-    t.integer  "cart_details_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade do |t|
@@ -58,8 +60,8 @@ ActiveRecord::Schema.define(version: 20161126144110) do
     t.string   "type"
     t.string   "location"
     t.integer  "province_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["province_id"], name: "index_districts_on_province_id"
   end
 
@@ -93,8 +95,8 @@ ActiveRecord::Schema.define(version: 20161126144110) do
   create_table "provinces", force: :cascade do |t|
     t.string   "name"
     t.string   "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -115,8 +117,8 @@ ActiveRecord::Schema.define(version: 20161126144110) do
     t.string   "type"
     t.string   "location"
     t.integer  "district_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["district_id"], name: "index_wards_on_district_id"
   end
 
