@@ -15,6 +15,12 @@
 			<%= f.label :province %>
 			<%= f.collection_select :id, Province.all, :id, :name, prompt: true%>
 
+			<%= f.label :district %>
+			<%= f.collection_select :id, District.all, :id, :name, prompt: true%>
+
+			<%= f.label :province %>
+			<%= f.collection_select :id, Ward.all, :id, :name, prompt: true%>
+
 			<%= f.label :address, "Địa chỉ" %>
 			<%= f.text_area :address, class: 'form-control' %>
 

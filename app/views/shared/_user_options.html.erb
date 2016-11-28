@@ -7,9 +7,9 @@
 	<!-- Single button -->
 	<div class="">
 		<ul>
-			<li><%= link_to "Thông tin tài khoản", "" %></li>
+			<li><%= link_to "Thông tin tài khoản", user_path(current_user) %></li>
 			<li><%= link_to "Chỉnh sửa thông tin", edit_user_path(current_user) %></li>
-			<li><%= link_to "Sổ địa chỉ", "" %></li>
+			<li><%= link_to "Sổ địa chỉ", new_address_list_path %></li>
 			<li><%= link_to "Đơn hàng của tôi", "" %></li>
 		</ul>
 	</div>
