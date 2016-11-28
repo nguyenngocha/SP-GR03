@@ -1,0 +1,16 @@
+<div class="col-md-3">
+	<div class="user_info">
+		<%= gravatar_for @user, size: 50 %>
+		<p>Tai khoan cua</p>
+		<h5 class='name'> <%= @user.name %> </h5>
+	</div>
+	<!-- Single button -->
+	<div class="">
+		<ul>
+			<li><%= link_to "Thông tin tài khoản", "" %></li>
+			<li><%= link_to "Chỉnh sửa thông tin", edit_user_path(current_user) %></li>
+			<li><%= link_to "Sổ địa chỉ", "" %></li>
+			<li><%= link_to "Đơn hàng của tôi", "" %></li>
+		</ul>
+	</div>
+</div>

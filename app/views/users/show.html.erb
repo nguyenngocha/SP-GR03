@@ -1,21 +1,7 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-	<div class="col-md-3">
-		<div class="user_info">
-			<%= gravatar_for @user, size: 50 %>
-			<p>Tai khoan cua</p>
-			<h5 class='name'> <%= @user.name %> </h5>
-		</div>
-		<!-- Single button -->
-		<div class="">
-			<ul>
-				<li><%= link_to "Thông tin tài khoản", "https://google.com" %></li>
-				<li><%= link_to "Chỉnh sửa thông tin", "https://google.com" %></li>
-				<li><%= link_to "Sổ địa chỉ", "" %></li>
-				<li><%= link_to "Đơn hàng của tôi", "https://google.com" %></li>
-			</ul>
-		</div>
-	</div>
+	<%= render 'shared/user_options' %>
+
 	<div class="col-md-9 dashboard">
 		<h1>Bảng thông tin của tôi</h1>
 		
@@ -67,16 +53,6 @@
 				</div>
 			</div>
 
-			<div class="panel panel-default item col-md-6">
-				<div class="panel-body">
-					<p class="name"><%= @user.name %></p>
-					<p class="address">Địa chỉ: <%= %></p>
-					<p class="phone">Điện thoại: <%=  %></p>
-					<p class="action">
-						<%= link_to "Chỉnh sửa", '', class: 'btn btn-default' %>
-					</p>
-				</div>
-			</div>
 		</div>
 	</div>
 </div>
