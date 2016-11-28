@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118010233) do
+ActiveRecord::Schema.define(version: 20161127143632) do
+
+  create_table "address_lists", force: :cascade do |t|
+    t.string   "address"
+    t.string   "phone_number"
+    t.integer  "ward_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_address_lists_on_user_id"
+    t.index ["ward_id"], name: "index_address_lists_on_ward_id"
+  end
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -30,6 +41,16 @@ ActiveRecord::Schema.define(version: 20161118010233) do
     t.datetime "updated_at",  null: false
     t.index ["category_id"], name: "index_classifies_on_category_id"
     t.index ["product_id"], name: "index_classifies_on_product_id"
+  end
+
+  create_table "districts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "type"
+    t.string   "location"
+    t.integer  "province_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["province_id"], name: "index_districts_on_province_id"
   end
 
   create_table "order_details", force: :cascade do |t|
@@ -59,6 +80,13 @@ ActiveRecord::Schema.define(version: 20161118010233) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "provinces", force: :cascade do |t|
+    t.string   "name"
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -70,6 +98,16 @@ ActiveRecord::Schema.define(version: 20161118010233) do
     t.string   "gender"
     t.datetime "birthday"
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "wards", force: :cascade do |t|
+    t.string   "name"
+    t.string   "type"
+    t.string   "location"
+    t.integer  "district_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["district_id"], name: "index_wards_on_district_id"
   end
 
 end

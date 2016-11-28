@@ -21,20 +21,17 @@
 	</div>
 
 	<div class="col-md-6">
-		<%= form_for(@user) do |f| %>
+		<%= form_for(@address_list) do |f| %>
 			<%= render 'shared/error_messages' %>
 			
-			<%= f.label :name %>
-			<%= f.text_field :name, class: 'form-control' %>
+			<%= f.label :phone, "Số điện thoại" %>
+			<%= f.text_field :phone_number, class: 'form-control' %>
 
-			<%= f.label :email %>
-			<%= f.email_field :email, class: 'form-control' %>
+			<%= f.label :province %>
+			<%= f.collection_select :id, Province.all, :id, :name, prompt: true%>
 
-			<%= f.label :password %>
-			<%= f.password_field :password, class: 'form-control' %>
-
-			<%= f.label :password_confirmation %>
-			<%= f.password_field :password_confirmation, class: 'form-control' %>
+			<%= f.label :address, "Địa chỉ" %>
+			<%= f.text_area :address, class: 'form-control' %>
 
 			<%= f.submit "Save changes", class: "btn btn-primary" %>
 		<% end %>
