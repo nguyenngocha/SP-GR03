@@ -1,2 +1,33 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<body>
+<%= render "layouts/tool" %>
+<div class="show row">	
+	<div class="col-sm-2">	
+		<% if FileTest.exist?("#{Rails.root}/app/assets/images/products/#{@product.id}.jpg") %>
+				<%= image_tag("products/#{@product.id}" , :size => "175x260") %>
+			<% else %>
+			<%= image_tag("products/1" , :size => "175x260") %>
+			<% end %>
+	</div>
+	<div class="show-detail col-sm-6">
+		<%= "<h3>#{@product.name}</h3>".html_safe %>
+		<% if @categories.any? %>
+		<p class="category">Category : </p>
+		<% @categories.each do |c| %>
+		<p class="category"><%= c.name %></p>
+		<% end %>
+		<% end %>	
+		<p><%= "Price: "+@product.price.to_s %></p>
+		<% if (@product.amount > 0) %>
+			<p><%=  'Available' %></p> 
+		<% else %>
+			<p><%=  'Unavailable' %></p>
+		<% end%>
+		<div class="span6 offset3">
+			<%= form_for(@product.cartdetails.build) do |f| %>
+	      <%= f.hidden_field :product_id, {:value => @product.id} %>
+	      <%= f.submit "Add to Cart" , class: "btn btn-primary" %>
+	    <% end %>
+	    </div>
+	</div>
+</div>
+</body>

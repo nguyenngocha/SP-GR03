@@ -1,0 +1,51 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Cart</div>
+
+  <table class="table table-striped" id="cart_items">
+    <tr>
+      <th>Product</th>
+      <th class="price">Unit Price</th>
+      <th class="price">Full Price</th>
+      <th class="price">Quantity</th>
+
+
+    <% for cart_item in @cart.cartdetails %>
+      <tr class="<%= cycle :odd, :even %>">
+        <td><%=h cart_item.product.name %></td>
+        <td class="price"><%= number_to_currency(cart_item.unit_price) %></td>
+        <td class="price"><%= number_to_currency(cart_item.full_price) %></td>
+
+        <td>
+        <div class="col-sm-4">
+       <%= form_for cart_item, :url => { :action => "update",:controller=>"cartdetails" }, :html => { :method => "put", :class => "update_form" } do |f| %>
+          <%= f.hidden_field :product_id, {:product_id => cart_item.product.id} %>
+            <%= f.number_field :amount, options = {:value => cart_item.amount , min: 1 } %>
+            </div>
+            </td>
+            <td>
+            <%= link_to "Update", "#", :onclick=>"$('.update_form').submit()" , :class => "btn  btn-info" %>
+          <% end %> 
+          </td>
+          <td>
+            <%= form_for cart_item, :url => { :action => "destroy",:controller=>"cartdetails" }, :html => { :method => "delete",:class => "remove_form"} do |f| %>
+          <%= f.hidden_field :product_id, {:product_id => cart_item.product.id} %>
+            <%= link_to "Remove", "#", :onclick=>"$('.remove_form').submit()" , :class => "btn  btn-info" %>
+          <% end %>
+           </td>
+      </tr>
+    <% end %>
+    <tr>
+      <td class="total price" colspan="4">
+        Total: <%= number_to_currency @cart.total_price %>
+      </td>
+    </tr>
+  </table>
+
+  <p>
+    <% if session[:forwarding_url] %>
+      <%= link_to "Continue Shopping", session[:forwarding_url] %> |
+    <% end %>
+    <%= link_to "Checkout" %> |
+    <%= link_to "Home" , root_path %>
+  </p>
+  </div>

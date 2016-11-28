@@ -46,19 +46,6 @@ h1 {
 	text-align: center;
 }
 
-h2 {
-	font-size: 1.2em;
-	letter-spacing:-1px;
-	margin-bottom: 30px;
-	text-align: center;
-	font-weight: normal;
-	color: $gray-light;
-}
-
-p {
-	font-size: 1.1em;
-	line-height: 1.7em;
-}
 
 /* header */
 #logo {
@@ -108,14 +95,6 @@ footer {
 	}
 }
 
-/* miscellaneous */
-.debug-dump {
-	clear: both;
-	float: left;
-	width: 100%;
-	margin-top: 45px;
-	@include box_sizing;
-}
 
 .gravatar {
 	float: left;
@@ -179,20 +158,8 @@ input {
 	}
 
 }
-.shopping_cart {
-	position: fixed;
-	float: right;
-	right: 3%;
-	z-index: 1;
-	width: 310px;
-    height: 270px;
-    /*check later */
-	background-color: #f2f2f2;
-	border-style: solid;
-	border-width: 1;
-	border-color: gray;
-	h2 {
-		color: #66e0ff;
-	}	
-}
 
+.group-search {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}

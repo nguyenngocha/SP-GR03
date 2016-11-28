@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	has_many :orders, dependent: :destroy
 	has_many :wards, through: :address_lists
+	has_one :cart
 	attr_accessor :remember_token
 	before_save { email.downcase! }
 	validates :name, presence: true, length: {maximum: 50}

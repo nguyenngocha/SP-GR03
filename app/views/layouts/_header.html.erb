@@ -24,6 +24,15 @@
           <li><%= link_to "Log in", login_path %></li>
           <li><%= link_to "Sign up", signup_path %></li>
         <% end %>
+        <li><%= link_to carts_path do %>
+          <span class="glyphicon glyphicon-shopping-cart"></span>Cart
+          <% if logged_in? %>
+          <span class="badge">
+          <%=current_cart.cartdetails.count %>
+          </span>
+          <% end %>
+          <% end %>
+          </li>
       </ul>
     </nav>
   </div>
