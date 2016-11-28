@@ -90,14 +90,6 @@ footer {
 	}
 }
 
-/* miscellaneous */
-.debug-dump {
-	clear: both;
-	float: left;
-	width: 100%;
-	margin-top: 45px;
-	@include box_sizing;
-}
 
 /* sidebar */
 aside {
@@ -188,22 +180,7 @@ input {
 	}
 
 }
-.shopping_cart {
-	position: fixed;
-	float: right;
-	right: 3%;
-	z-index: 1;
-	width: 310px;
-    height: 270px;
-    /*check later */
-	background-color: #f2f2f2;
-	border-style: solid;
-	border-width: 1;
-	border-color: gray;
-	h2 {
-		color: #66e0ff;
-	}	
-}
+
 .group-search {
 	margin-top: 10px;
 	margin-bottom: 10px;

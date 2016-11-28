@@ -22,6 +22,12 @@
 		<% else %>
 			<p><%=  'Unavailable' %></p>
 		<% end%>
+		<div class="span6 offset3">
+			<%= form_for(@product.cartdetails.build) do |f| %>
+	      <%= f.hidden_field :product_id, {:value => @product.id} %>
+	      <%= f.submit "Add to Cart" , class: "btn btn-primary" %>
+	    <% end %>
+	    </div>
 	</div>
 </div>
 </body>
