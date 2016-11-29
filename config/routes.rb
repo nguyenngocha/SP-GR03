@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-
-
+  get 'filter_districts_by_province' => 'address_lists#filter_districts_by_province'
+  get 'filter_wards_by_district' => 'address_lists#filter_wards_by_district'
+  
   get 'carts/show'
 
   get 'search/index'
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users
   resources :products , only: [:index,:show]
-  resources :address_lists, only: [:new, :create, :edit, :destroy]
+  resources :address_lists, only: [:index, :new, :create, :edit, :destroy]
   resources :carts 
   resources :cartdetails
   resources :categories
