@@ -1,5 +1,5 @@
 class Cart < ActiveRecord::Base
-	has_many :cartdetails
+	has_many :cartdetails , dependent: :destroy
   has_many :products, :through => :cartdetail
   belongs_to :user
   

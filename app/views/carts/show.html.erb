@@ -11,7 +11,10 @@
 
     <% for cart_item in @cart.cartdetails %>
       <tr class="<%= cycle :odd, :even %>">
-        <td><%=h cart_item.product.name %></td>
+        <td><%= link_to cart_item.product , class: 'link_to_p' do %>
+        <div class="link_to_p"><%= cart_item.product.name %></div>
+        <% end %>
+        </td>
         <td class="price"><%= number_to_currency(cart_item.unit_price) %></td>
         <td class="price"><%= number_to_currency(cart_item.full_price) %></td>
 
@@ -40,7 +43,7 @@
       </td>
     </tr>
   </table>
-
+    <%= link_to "Clear cart items", "carts/delete", :method => 'delete' , :class => "btn  btn-info" %>
   <p>
     <% if session[:forwarding_url] %>
       <%= link_to "Continue Shopping", session[:forwarding_url] %> |
