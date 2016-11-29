@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   post 'orders/new', to: 'orders#create'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users
+  resources :users, except: [:index]
   resources :products , only: [:index,:show]
   resources :address_lists, only: [:index, :new, :create, :edit, :destroy]
   resources :carts 

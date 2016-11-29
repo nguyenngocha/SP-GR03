@@ -15,7 +15,8 @@ class AddressListsController < ApplicationController
     @user = current_user
     @address = AddressList.new(address_params)
     if @address.save
-      redirect_to current_user
+      flash[:success] = "Created new address successful!"
+      redirect_to address_lists_path
     else
       redirect_to new_address_list_path
     end
@@ -23,12 +24,24 @@ class AddressListsController < ApplicationController
 
   def edit
     @user = current_user
+    @address_list = AddressList.find(params[:id])
   end
 
   def update
+    @user = current_user
+    @address_list = AddressList.find(params[:id])
+    if @address_list.update_attributes(address_params)
+      flash[:success] = "Updated address successful!"
+      redirect_to address_lists_path
+    else
+      redirect_to edit_address_list_path(params[:id])
+    end
   end
 
   def destroy
+    AddressList.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to address_lists_path
   end
 
   def filter_districts_by_province

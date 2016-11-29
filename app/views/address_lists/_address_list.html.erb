@@ -3,8 +3,7 @@
 		<p class="name"><%= address_list.name %></p>
 		<p class="address">Address: <%= address_list.to_string() %></p>
 		<p class="phone">Phone number: <%= address_list.phone_number %></p>
-		<p class="action">
-			<%= link_to "Edit", edit_address_list_path(address_list.id), class: 'btn btn-default' %>
-		</p>
+		<%= link_to "Edit", edit_address_list_path(address_list.id), class: 'btn btn-default btn-info' %>
+		<%= link_to "Delete", address_list, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-default btn-info' %>
 	</div>
 </div>
