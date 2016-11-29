@@ -3,18 +3,18 @@
 	<%= render 'shared/user_options' %>
 
 	<div class="col-md-9 dashboard">
-		<h1>Bảng thông tin của tôi</h1>
+		<h1>My Account Information</h1>
 		
 		<div class="dashboard-account row">
 			<div class="dashboard-header">
-				<h2>Thông tin tài khoản</h2>
-				<%= link_to "Chỉnh sửa >", edit_user_path(current_user) %>
+				<h2>Account Information</h2>
+				<%= link_to "Edit >", edit_user_path(current_user) %>
 			</div>
 			<div class="col-md-6 left">
 				<table>
 					<tbody>
 						<tr>
-							<td>Họ và tên:</td>
+							<td>Name:</td>
 							<td><%= @user.name %></td>
 						</tr>
 						<tr>
@@ -23,13 +23,13 @@
 						</tr>
 						<% if !@user.gender.blank? %>
 							<tr>
-							<td>Giới tính:</td>
+							<td>Gender:</td>
 							<td><%= @user.gender %></td>
 							</tr>
 						<% end %>
 						<% if !@user.birthday.nil? %>
 							<tr>
-							<td>Ngày sinh:</td>
+							<td>Birthday:</td>
 							<td><%= @user.birthday %></td>
 							</tr>
 						<% end %>
@@ -38,21 +38,25 @@
 			</div>
 		</div>
 		<div class="dashboard-header">
-			<h2>Sổ địa chỉ</h2>
-			<%= link_to "Xem tất cả >", '' %>
+			<h2>Address list</h2>
+			<%= link_to "See all >", address_lists_path %>
 		</div>
 		<div class="dashboard-address">
-			<div class="panel panel-default item col-md-6">
-				<div class="panel-body">
-					<p class="name"><%= @user.name %></p>
-					<p class="address">Địa chỉ: <%= %></p>
-					<p class="phone">Điện thoại: <%=  %></p>
-					<p class="action">
-						<%= link_to "Chỉnh sửa", '', class: 'btn btn-default' %>
-					</p>
+			<% unless @address_list.nil? %>
+				<div class="panel panel-default item col-md-6">
+					<div class="panel-body">
+						<p class="name"><%= @address_list.name %></p>
+						<p class="address">Address: <%= @address_list.to_string() %></p>
+						<p class="phone">Phone number: <%= @address_list.phone_number %></p>
+						<p class="action">
+							<%= link_to "Edit", edit_address_list_path(@address_list.id), class: 'btn btn-default btn-info' %>
+						</p>
+					</div>
 				</div>
-			</div>
-
+			<% else %>
+				<%= @text ="<h3>Not have any addresses</h3>".html_safe %>
+				<%= link_to 'Create new address', new_address_list_path, class: 'btn btn-default btn-primary btn-info' %>
+			<% end %>
 		</div>
 	</div>
 </div>
