@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   delete  'cartdetails/destroy'
   put  'cartdetails/update'
   delete 'carts/destroy'
+  put 'orders/update'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users
@@ -26,4 +27,5 @@ Rails.application.routes.draw do
   resources :carts 
   resources :cartdetails
   resources :categories
+  resources :orders
 end

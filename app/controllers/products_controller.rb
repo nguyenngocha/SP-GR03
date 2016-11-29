@@ -16,12 +16,12 @@ class ProductsController < ApplicationController
   	if(params[:search].nil? || params[:search].empty?)
 		@product = Product.all.order(created_at: :desc)
 	else
-		@product = Product.search.(params[:category], params[:search]).order(created_at: :desc)
+		@product = Product.order(created_at: :desc).search(params[:category], params[:search])
 	end
 	if @product
-  		@products = @product.order(created_at: :desc).paginate(page: params[:page], :per_page => 12)
+  		@products = @product.paginate(page: params[:page], :per_page => 12)
   	else
-  		@products = @product..order(created_at: :desc)
+  		@products = @product
   	end
 
   	@categories = Category.all
