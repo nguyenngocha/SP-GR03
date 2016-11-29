@@ -1,0 +1,8 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.link_to_p {
+	&:hover{
+		background-color: #5bc0de;
+	}
+}

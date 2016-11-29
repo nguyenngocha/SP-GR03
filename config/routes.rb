@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get '/carts', to: 'carts#show'
   delete  'cartdetails/destroy'
   put  'cartdetails/update'
+  delete 'carts/destroy'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users
@@ -25,4 +26,5 @@ Rails.application.routes.draw do
   resources :address_lists, only: [:index, :new, :create, :edit, :destroy]
   resources :carts 
   resources :cartdetails
+  resources :categories
 end

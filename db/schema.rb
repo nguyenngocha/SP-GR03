@@ -31,15 +31,13 @@ ActiveRecord::Schema.define(version: 20161127143632) do
     t.integer  "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cart_id"], name: "index_cartdetails_on_cart_id"
-    t.index ["product_id"], name: "index_cartdetails_on_product_id"
   end
 
   create_table "carts", force: :cascade do |t|
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_carts_on_user_id"
+    t.integer  "cart_details_id"
   end
 
   create_table "categories", force: :cascade do |t|
