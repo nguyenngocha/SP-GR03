@@ -1,36 +1,21 @@
-<% provide(:title, "Sổ địa chỉ") %>
-<h1>Sổ địa chỉ</h1>
+<% provide(:title, "Address list") %>
+<h1>Address list</h1>
 
 <div class="row">
 	<%= render 'shared/user_options' %>
 
 	<div class="col-md-9">
 		<div class="dashboard-header">
-			<h2>Sổ địa chỉ</h2>
-			<%= link_to "Xem tất cả >", '' %>
+			<h2>Address list</h2>
+			<%= link_to "Create new address >", new_address_list_path %>
 		</div>
 		<div class="dashboard-address">
-			<div class="panel panel-default item col-md-6">
-				<div class="panel-body">
-					<p class="name"><%= @user.name %></p>
-					<p class="address">Địa chỉ: <%= %></p>
-					<p class="phone">Điện thoại: <%=  %></p>
-					<p class="action">
-						<%= link_to "Chỉnh sửa", '', class: 'btn btn-default' %>
-					</p>
-				</div>
-			</div>
-
-			<div class="panel panel-default item col-md-6">
-				<div class="panel-body">
-					<p class="name"><%= @user.name %></p>
-					<p class="address">Địa chỉ: <%= %></p>
-					<p class="phone">Điện thoại: <%=  %></p>
-					<p class="action">
-						<%= link_to "Chỉnh sửa", '', class: 'btn btn-default' %>
-					</p>
-				</div>
-			</div>
-		</div>r
+		<% if @address_lists.any? %>
+			<%= render @address_lists %>
+		<%= will_paginate%>			
+		<% else %>
+			<%= @text ="<h3>Not have any addresses</h3>".html_safe %>
+		<% end %>
+		</div>
 	</div>
 </div>

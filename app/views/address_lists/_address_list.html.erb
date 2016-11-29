@@ -1,0 +1,10 @@
+<div class="panel panel-default item col-md-6">
+	<div class="panel-body">
+		<p class="name"><%= address_list.name %></p>
+		<p class="address">Address: <%= %></p>
+		<p class="phone">Phone number: <%= address_list.phone_number %></p>
+		<p class="action">
+			<%= link_to "Edit", edit_address_list_path(address_list.id), class: 'btn btn-default' %>
+		</p>
+	</div>
+</div>
