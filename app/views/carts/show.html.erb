@@ -43,7 +43,10 @@
       </td>
     </tr>
   </table>
+  <div class="cart_btn">
     <%= link_to "Clear cart items", "carts/delete", :method => 'delete' , :class => "btn  btn-info" %>
+    <%= link_to "Check out", "orders/new", :method => 'get' , :class => "btn  btn-info" %>
+    </div>
   <p>
     <% if session[:forwarding_url] %>
       <%= link_to "Continue Shopping", session[:forwarding_url] %> |

@@ -16,7 +16,7 @@
 		<% end %>
 		<% end %>
 		<p>Describe :  <%= @product.content %></p>
-		<p><%= "Price: "+@product.price.to_s %></p>
+		<p><%= "Price: "+@product.price.to_s+" $" %></p>
 		<% if (@product.amount > 0) %>
 			<p><%=  'Available' %></p> 
 		<% else %>

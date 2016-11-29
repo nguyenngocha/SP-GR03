@@ -1,11 +1,46 @@
-<div class="col-sm-4">
-	<%= form_for @order, :url => { :action => "update" } do |f| %>
-	<% if(session[:text]) %>
-	    <%= f.text_field :note ,:value => session[:text] %>
-		<% else %>           
-	    <%= f.text_field :note %>
-        <% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">Cart</div>
 
-         <%= link_to "Cart", "#", :onclick=>"$('.update_cart').submit()" , :class => "btn  btn-info" %>
+  <table class="table table-striped" id="cart_items">
+    <tr>
+      <th>Oders</th>
+      <th class="price">Unit Price</th>
+      <th class="price">Full Price</th>
+      <th class="price">Quantity</th>
+
+
+    <% for cart_item in @cart.cartdetails %>
+      <tr class="<%= cycle :odd, :even %>">
+        <td><%= link_to cart_item.product , class: 'link_to_p' do %>
+        <div class="link_to_p"><%= cart_item.product.name %></div>
         <% end %>
+        </td>
+        <td class="price"><%= number_to_currency(cart_item.unit_price) %></td>
+        <td class="price"><%= number_to_currency(cart_item.full_price) %></td>
+        <td class="price"><%= cart_item.amount%></td>
+        <% end %>
+</tr>
+</tr>
+</table>
+</div>
+<div>
+	<p>Choose your address : </p>
+	<div class="col-xs-3">
+	<%= form_for :order do |f| %>
+	<%= collection_select(:order, :address_id,  @address, :id, :name,{ :selected => @address.first}, {class: "btn btn-default dropdown-toggle"}) %>
+	</div>
+		<% if !@address.any? %>
+	<span class="alert alert-warning">Please add new address before order</span>
+	<% end %>
+	<br>
+	<br><br>
+	<%= link_to "Change oder", carts_path,:class => "btn  btn-info" %>
+	<%= link_to "Add new address", new_address_list_path, :class => "btn  btn-info" %>
+	<%= f.label "Note :" %>
+
+	<%= f.text_area :note %> 
+	<div class="col-xs-3">
+	<%= f.submit "Send Order",class: "but_send btn  btn-info" %> 
+	</div>
+	<% end %>
 </div>
